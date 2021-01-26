@@ -1,0 +1,57 @@
+#%RAML 1.0
+title: basic-auth-sample
+version: 1.0.0
+/test:
+  get:
+    description: test the request
+    queryParameters:
+      destination?:
+        example: Example
+        type: string
+    responses:
+      "200":
+        body:
+          application/json:
+            type: object
+    securedBy: []
+  post:
+    description: create
+    body:
+      application/json:
+        properties:
+          name:
+            example: anil
+            type: string
+          email:
+            example: anil@gmail.com
+            type: string
+    responses:
+      "500":
+        body:
+          application/json:
+            properties:
+              status:
+                example: Failed
+                type: string
+              statusCode:
+                example: 500
+                type: number
+                minimum: 500
+                maximum: 599
+                format: int
+      "201":
+        body:
+          application/json:
+            properties:
+              name:
+                example: anil
+                type: string
+              email:
+                example: anil@gmail.com
+                type: string
+              id:
+                example: 1001
+                type: number
+                minimum: 1000
+                format: int
+securedBy: []
